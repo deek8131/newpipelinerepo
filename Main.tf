@@ -6,16 +6,16 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name   = "Vaishanvi_RG"
-    storage_account_name  = "vaishanvistorage"
-    container_name        = "vaishanvicontainer"
+    resource_group_name   = "saurabh-rg"
+    storage_account_name  = "sgtsaurabh"
+    container_name        = "newcont"
     key                   = "prod.terraform.tfstate"
   }
 }
 
 provider "azurerm" {
   features {}
-  subscription_id = "50fb151d-0992-4631-9cc9-86f052a3e0b0"
+  subscription_id = "5fbead97-423e-4814-809c-114db991d911"
 }
 
 resource "azurerm_resource_group" "motorg" {
@@ -24,7 +24,7 @@ resource "azurerm_resource_group" "motorg" {
 }
 
 resource "azurerm_storage_account" "motoacc" {
-  name                     = "motostorageaccount9817"
+  name                     = "deeksha12345"
   resource_group_name      = "MotoRG12"
   location                 = "West US"
   account_tier             = "Standard"
@@ -37,3 +37,4 @@ resource "azurerm_storage_container" "motocontainer" {
   container_access_type = "private"
 depends_on = [azurerm_storage_account.motoacc]
 }
+
