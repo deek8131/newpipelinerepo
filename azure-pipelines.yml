@@ -1,0 +1,25 @@
+trigger: none
+pool: 
+  name: agent1
+steps:
+- task: TerraformInstaller@1
+  displayName: terraform install
+  inputs:
+    terraformVersion: 'latest'
+- task: TerraformTask@5
+  displayName: terraform init
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'sc2'
+    backendAzureRmResourceGroupName: 'saurabh-rg'
+    backendAzureRmStorageAccountName: 'sgtsaurabh'
+    backendAzureRmContainerName: 'newcont'
+    backendAzureRmKey: 'prod.terraform.tfstate'
+- task: TerraformTask@5
+  displayName: terraform plan
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'sc2'
+  
