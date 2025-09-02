@@ -2,6 +2,7 @@ trigger: none
 pool: 
   name: agent1
 steps:
+
 - task: TerraformInstaller@1
   displayName: terraform install
   inputs:
@@ -12,18 +13,12 @@ steps:
     provider: 'azurerm'
     command: 'init'
     backendServiceArm: 'newsc'
-    backendAzureRmResourceGroupName: 'saurabh-rg'
     backendAzureRmStorageAccountName: 'sgtsaurabh'
     backendAzureRmContainerName: 'newcont'
-    backendAzureRmKey: '
-  - task: TerraformTask@5
+    backendAzureRmKey: 'prod.terraform.tfstate'
+- task: TerraformTask@5
+  displayName: terraform plan
   inputs:
     provider: 'azurerm'
-    command: 'init'
-    backendServiceArm: 'newsc'
-    backendAzureRmResourceGroupName: 'saurabh-rg'
-    backendAzureRmStorageAccountName: 'sgtsaurabh'
-    backendAzureRmContainerName: 'newcont'
-    backendAzureRmKey: 'prod.terraform.tfstate''
-  
-  
+    command: 'plan'
+    environmentServiceNameAzureRM: 'newsc'
