@@ -11,15 +11,19 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    backendServiceArm: 'sc2'
+    backendServiceArm: 'newsc'
     backendAzureRmResourceGroupName: 'saurabh-rg'
     backendAzureRmStorageAccountName: 'sgtsaurabh'
     backendAzureRmContainerName: 'newcont'
-    backendAzureRmKey: 'prod.terraform.tfstate'
-- task: TerraformTask@5
-  displayName: terraform plan
+    backendAzureRmKey: '
+  - task: TerraformTask@5
   inputs:
     provider: 'azurerm'
-    command: 'plan'
-    environmentServiceNameAzureRM: 'sc2'
+    command: 'init'
+    backendServiceArm: 'newsc'
+    backendAzureRmResourceGroupName: 'saurabh-rg'
+    backendAzureRmStorageAccountName: 'sgtsaurabh'
+    backendAzureRmContainerName: 'newcont'
+    backendAzureRmKey: 'prod.terraform.tfstate''
+  
   
