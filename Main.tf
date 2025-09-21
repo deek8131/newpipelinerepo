@@ -15,8 +15,10 @@ terraform {
 
 provider "azurerm" {
   features {}
-  subscription_id = "5fbead97-423e-4814-809c-114db991d911"
+  subscription_id = "aac413e4-3fc4-4565-9935-d31ad9b2ff49"
 }
+
+
 
 resource "azurerm_resource_group" "motorg" {
   name     = "MotoRG12"
@@ -37,4 +39,5 @@ resource "azurerm_storage_container" "motocontainer" {
   container_access_type = "private"
 depends_on = [azurerm_storage_account.motoacc]
 }
+
 
